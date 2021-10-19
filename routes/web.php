@@ -17,16 +17,18 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+//Route::get('/edit', [HomeController::class, 'edit']);
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login']);
+Route::get('logout', [AuthController::class, 'logout']);
 
 Route::prefix('advts')->group(function () {
-    Route::get('/', [AdvtController::class, 'index']);
+    Route::get('/', [AdvtController::class, 'index'])->middleware('auth');
 
-    Route::match(['get', 'post'], '/create', [AdvtController::class, 'form']);
-    Route::match(['get', 'post'], '/update/{id}', [AdvtController::class, 'form']);
+    Route::match(['get', 'post'], '/create', [AdvtController::class, 'form'])->middleware('auth');
+    Route::match(['get', 'post'], '/update/{id}', [AdvtController::class, 'form'])->middleware('auth');
 
-    Route::get('/delete/{id}', [AdvtController::class, 'delete']);
+    Route::get('/delete/{id}', [AdvtController::class, 'delete'])->middleware('auth');
 });
 
 //Route::get('/', function () {

@@ -17,4 +17,13 @@ class HomeController extends Controller
         return view('index', ['advts' => $advts]);
     }
 
+    public function edit()
+    {
+//        $advts = DB::table('advts')
+//            ->join('users', 'advts.user_id', '=', 'users.id')
+//            ->get();
+
+        return redirect ('/edit');
+    }
+
 }
