@@ -17,12 +17,14 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-//Route::get('/edit', [HomeController::class, 'edit']);
+Route::get('/advts', [AdvtController::class, 'index']);
+Route::get('/advts/form', [AdvtController::class, 'form']);
+Route::post('/advts/Create', [AdvtController::class, 'create']);
 
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 
-Route::prefix('advts')->group(function () {
+Route::prefix('advtsrr')->group(function () {
     Route::get('/', [AdvtController::class, 'index'])->middleware('auth');
 
     Route::match(['get', 'post'], '/create', [AdvtController::class, 'form'])->middleware('auth');

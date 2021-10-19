@@ -36,9 +36,9 @@ use Illuminate\Support\Facades\Auth;
                             </button>
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div class="navbar-nav">
-                                    <a class="nav-link" href="advts/">Create Ad</a>
-                                    <a class="nav-link disabled" href="#" tabindex="-1"
-                                       aria-disabled="true">Disabled</a>
+                                    <?php if (Auth::user() !== null):?>
+                                    <a class="nav-link" href="advts">Create Ad</a>
+                                    <?php endif;?>
                                 </div>
                                 <?php if (Auth::user() === null):?>
 
