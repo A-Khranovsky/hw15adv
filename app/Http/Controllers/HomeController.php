@@ -35,7 +35,7 @@ class HomeController extends Controller
     public function form()
     {
         $advt['action'] = 'Create';
-        return view('home.form', ['advt' => $advt]);
+        return view('edit.form', ['advt' => $advt]);
 
     }
 
@@ -46,7 +46,7 @@ class HomeController extends Controller
             'description' => $request->get('description'),
             'user_id' => Auth::id()
         ]);
-        return redirect('/home');
+        return redirect('/');
     }
 
 //    public function createAdvt(Request $request)
