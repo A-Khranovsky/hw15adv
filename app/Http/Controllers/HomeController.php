@@ -25,6 +25,30 @@ class HomeController extends Controller
 //        return view('edit.form', ['advt' => $advt]);
     }
 
+    public function home()
+    {
+        $advts = Advt::where('user_id', Auth::id())->orderBy('id', 'desc')->get();
+
+        return view('home.index', ['advts' => $advts]);
+    }
+
+    public function form()
+    {
+        $advt['action'] = 'Create';
+        return view('home.form', ['advt' => $advt]);
+
+    }
+
+    public function create(Request $request)
+    {
+        Advt::create([
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+            'user_id' => Auth::id()
+        ]);
+        return redirect('/home');
+    }
+
 //    public function createAdvt(Request $request)
 //    {
 //        Advt::create([

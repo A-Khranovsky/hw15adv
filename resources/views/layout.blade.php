@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Auth;
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div class="navbar-nav">
                                     <?php if (Auth::user() !== null):?>
-                                    <a class="nav-link" href="advts">Create Ad</a>
+                                    <a class="nav-link" href="home/form">Create Ad</a>
                                     <?php endif;?>
                                 </div>
                                 <?php if (Auth::user() === null):?>

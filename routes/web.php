@@ -17,6 +17,10 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'home']);
+Route::get('/home/form', [HomeController::class, 'form']);
+Route::post('/home/Create', [HomeController::class, 'create']);
+
 Route::get('/advts', [AdvtController::class, 'index']);
 Route::get('/advts/form', [AdvtController::class, 'form']);
 Route::post('/advts/Create', [AdvtController::class, 'create']);

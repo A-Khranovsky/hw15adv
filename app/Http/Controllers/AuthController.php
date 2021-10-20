@@ -12,10 +12,11 @@ class AuthController extends Controller
     {
         $credential = $request->only('name', 'password');
         if (Auth::attempt($credential)) {
-            $advts = DB::table('advts')
-                ->join('users', 'advts.user_id', '=', 'users.id')
-                ->get();
-            return view('advts.index', ['advts' => $advts]);
+//            $advts = DB::table('advts')
+//                ->join('users', 'advts.user_id', '=', 'users.id')
+//                ->get();
+            //return view('advts.index', ['advts' => $advts]);
+            return redirect('/home');
         } else {
             return redirect('/');
         }
