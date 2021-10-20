@@ -21,7 +21,7 @@
                     <th scope="row">{{$advt->id}}</th>
                     <td>{{$advt->title}}</td>
                     <td>{{$advt->description}}</td>
-                    <td>{{$advt->name}}</td>
+                    <td>{{$advt->username}}</td>
                     <td>{{$advt->created_at}}</td>
                     <td>Edit | Delete</td>
                 </tr>

@@ -3,7 +3,6 @@
 @section('title', 'Advts')
 
 @section('body')
-    {{--    <a href="/categories/create">Add</a>--}}
     @foreach($advts as $advt)
 
             <div class="card w-80 m-3 border-dark">
@@ -15,13 +14,16 @@
                 </div>
                 <div class="card-footer">
                     <div class="row">
-                        <div class="col-auto me-auto fs-7">Author: {{$advt->name}}</div>
+                        <div class="col-auto me-auto fs-7">Author: {{$advt->username}}</div>
                         <div class="col-auto">
                             <small class="text-muted">
-                                Posted: {{$advt->created_at}}
+                                Created at: {{$advt->created_at}}
                             </small></div>
                     </div>
                 </div>
             </div>
     @endforeach
+    <div class="d-flex justify-content-center">
+        {{$advts->links()}}
+    </div>
 @endsection

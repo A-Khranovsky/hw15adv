@@ -16,10 +16,20 @@ use App\Http\Controllers\AuthController;
 |
 */
 
+//Route::get('/', function () {
+//    $ = App\User::paginate(15);
+//
+//    $users->withPath('custom/url');
+//
+//    //
+//});
+
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'home']);
 Route::get('/edit', [HomeController::class, 'form']);
 Route::post('/edit/Create', [HomeController::class, 'create']);
+
+Route::get('/{id}', [HomeController::class, 'advt']);
 
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
