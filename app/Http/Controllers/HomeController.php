@@ -35,13 +35,6 @@ class HomeController extends Controller
         return redirect('/' . $id);
     }
 
-    public function home()
-    {
-        $advts = Advt::where('user_id', Auth::id())->orderBy('id', 'desc')->get();
-
-        return view('home.index', ['advts' => $advts]);
-    }
-
     public function form()
     {
         $request = request();
@@ -51,11 +44,9 @@ class HomeController extends Controller
             $advt['advt'] = Advt::find($id);
             $advt['action'] = $id;
             $advt['buttonName'] = 'Save';
-            //return redirect()->route('home');
         } else {
             $advt['action'] = '';
             $advt['buttonName'] = 'Create';
-            //return redirect()->route('home');
         }
         return view('edit.form', ['advt' => $advt]);
 

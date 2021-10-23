@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Advts')
+@section('title', 'Advts-service')
 
 @section('content')
     @foreach($advts as $advt)

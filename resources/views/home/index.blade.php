@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Edit advts')
+@section('title', 'View advt')
 
 @section('body')
     <div class="card border-dark">

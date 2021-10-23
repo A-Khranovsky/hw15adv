@@ -14,20 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $users = \App\Models\User::factory(5)->create();
-        $advts = \App\Models\Advt::factory()->count(15)->make(['user_id' => null]);
+        $users = \App\Models\User::factory(10)->create();
+        $advts = \App\Models\Advt::factory()->count(100)->make(['user_id' => null]);
 
         $advts->each(function (Advt $advt) use ($users) {
             $advt->user()->associate($users->random());
             $advt->save();
         });
-
-
-//        $advts->each(function(Advt $advt) use ($users)
-//        {
-//            $advt->user()->attach($users->random(rand(3,5))->pluck('id'));
-//            //$users->
-//        });
 
     }
 }

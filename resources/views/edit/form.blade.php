@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Advt management')
+@section('title', 'Create Advt')
 
 @section('content')
     <form action="<?=$advt['action']?>" method="post">

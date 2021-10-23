@@ -17,14 +17,13 @@ use App\Http\Controllers\AuthController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/home', [HomeController::class, 'home']);
-Route::get('/edit', [HomeController::class, 'form'])->name('advts.create');
-Route::post('/edit', [HomeController::class, 'create'])->name('advts.create');
+Route::get('/edit', [HomeController::class, 'form'])->name('advts.create')->middleware('auth');
+Route::post('/edit', [HomeController::class, 'create'])->name('advts.create')->middleware('auth');
 
 Route::get('/{id}', [HomeController::class, 'advt'])->whereNumber('id');
-Route::get('/delete/{id}', [HomeController::class, 'delete']);
-Route::get('/edit/{id}', [HomeController::class, 'form'])->whereNumber('id');
-Route::post('/edit/{id}', [HomeController::class, 'edit'])->whereNumber('id');
+Route::get('/delete/{id}', [HomeController::class, 'delete'])->middleware('auth');
+Route::get('/edit/{id}', [HomeController::class, 'form'])->whereNumber('id')->middleware('auth');
+Route::post('/edit/{id}', [HomeController::class, 'edit'])->whereNumber('id')->middleware('auth');
 
-Route::post('login', [AuthController::class, 'login']);
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('login', [AuthController::class, 'login'])->middleware('guest');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
