@@ -2,7 +2,7 @@
 
 @section('title', 'Advts')
 
-@section('body')
+@section('content')
     @foreach($advts as $advt)
             <div class="card w-80 m-3 border-dark">
                 <div class="card-header">

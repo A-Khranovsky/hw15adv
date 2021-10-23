@@ -21,10 +21,36 @@ use Illuminate\Support\Facades\Auth;
         crossorigin="anonymous"></script>
 <div class="container">
     <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light bg-success bg-gradient rounded-1">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Advs-service</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        @auth
+                        <li class="nav-item">
+                            Wellcome {{\Illuminate\Support\Facades\Auth::user()->username}}
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('advts.create')}}">Create Ad</a>
+                        </li>
+                        @endauth
+                        @guest
+                        <li class="nav-item">
+
+                        </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
         <div class="col-8">
-            @auth
-                <a href="{{route('advts.create')}}">Create Ad<a>
-            @endauth
             @yield('content')
         </div>
         <div class="col-4">
