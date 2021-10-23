@@ -12,19 +12,23 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $credential = $request->only('username', 'password');
-        if(Auth::attempt($credential)){
-            return redirect('/');
-        } else {
-            $user = User::create([
-                'username' => $request->input('username'),
-                'email' => '',
-                'password' => bcrypt($request->input('password')),
-                'remember_token' => $request->input('_token'),
-            ]);
-            Auth::login($user);
-            return redirect('/');
-        }
+        $request->validate([
+            'username'=>['required'],
+            'password'=>['required']
+        ]);
+//        $credential = $request->only('username', 'password');
+//        if(Auth::attempt($credential)){
+//            return redirect('/');
+//        } else {
+//            $user = User::create([
+//                'username' => $request->input('username'),
+//                'email' => '',
+//                'password' => bcrypt($request->input('password')),
+//                'remember_token' => $request->input('_token'),
+//            ]);
+//            Auth::login($user);
+//            return redirect('/');
+//        }
     }
 
     public function logout()
