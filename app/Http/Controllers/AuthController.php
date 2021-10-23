@@ -23,13 +23,13 @@ class AuthController extends Controller
                 return back()->withErrors([
                     'password' => 'Wrong password'
                 ]);
-
             }
         } else {
             $user = User::create([
                 'username' => $data['username'],
                 'email' => $data['username'],
-                'password' => Hash::make($data['password'])
+                'password' => Hash::make($data['password']),
+                'remember_token' => $request->input('_token'),
             ]);
         }
 

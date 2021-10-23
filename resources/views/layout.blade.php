@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
+
 ?>
     <!doctype html>
 <html lang="en">
@@ -45,4 +48,3 @@ use Illuminate\Support\Facades\Auth;
 </div>
 </body>
 </html>
-

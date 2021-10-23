@@ -21,7 +21,6 @@ class CreateAdvtsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
-
     }
 
     /**
@@ -31,8 +30,7 @@ class CreateAdvtsTable extends Migration
      */
     public function down()
     {
-        Schema::table('advts', function(Blueprint $table)
-        {
+        Schema::table('advts', function (Blueprint $table) {
             $table->dropConstrainedForeignId('user_id');
         });
 

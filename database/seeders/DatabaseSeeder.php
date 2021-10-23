@@ -21,6 +21,5 @@ class DatabaseSeeder extends Seeder
             $advt->user()->associate($users->random());
             $advt->save();
         });
-
     }
 }

@@ -23,8 +23,8 @@ class AdvtFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence(rand(3,5) ,true),
-            'description' => $this->faker->sentence(rand(30,50) ,true),
+            'title' => $this->faker->sentence(rand(3, 5), true),
+            'description' => $this->faker->sentence(rand(30, 50), true),
             'user_id' => \App\Models\User::factory()
         ];
     }

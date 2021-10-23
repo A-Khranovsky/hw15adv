@@ -40,7 +40,6 @@ class HomeController extends Controller
         $request = request();
 
         if ($id = $request->route()->parameter('id')) {
-
             $advt['advt'] = Advt::find($id);
             $advt['action'] = $id;
             $advt['buttonName'] = 'Save';
@@ -49,7 +48,6 @@ class HomeController extends Controller
             $advt['buttonName'] = 'Create';
         }
         return view('edit.form', ['advt' => $advt]);
-
     }
 
     public function create(Request $request)
@@ -82,5 +80,4 @@ class HomeController extends Controller
         $advt->delete();
         return redirect('/');
     }
-
 }
