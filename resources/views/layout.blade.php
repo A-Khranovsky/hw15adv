@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Advts-service</title>
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
@@ -21,52 +21,19 @@ use Illuminate\Support\Facades\Auth;
         crossorigin="anonymous"></script>
 <div class="container">
     <div class="row">
-        <div class="row row-cols-1 ms-5 me-5">
-            <div class="col">
-                <nav class="navbar navbar-expand-lg navbar-light bg-success bg-gradient rounded-1">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="/">Advs-service</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div class="navbar-nav">
-                                <?php if (Auth::user() !== null):?>
-                                <a class="nav-link" href="/edit">Create Ad</a>
-                                <?php endif;?>
-                            </div>
-                            <?php if (Auth::user() === null):?>
-
-                            <form class="row g-3" method="post" action="login">
-                                @csrf
-                                <div class="col-auto">
-                                    <label for="inputuserName" class="visually-hidden">Name</label>
-                                    <input name="username" type="text" class="form-control-sm" id="inputuserName"
-                                           placeholder="Name">
-                                </div>
-                                <div class="col-auto">
-                                    <label for="inputPassword2" class="visually-hidden">Password</label>
-                                    <input name="password" type="password" class="form-control-sm" id="inputPassword2"
-                                           placeholder="Password">
-                                </div>
-                                <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary mb-3 btn-sm">Confirm identity</button>
-                                </div>
-                            </form>
-                            <?php else:?>
-                            <?='Wellcome ' . Auth::user()->username?>
-                            <span>&nbsp<a href="logout">Logout</a></span>
-                            <?php endif;?>
-                        </div>
-                    </div>
-                </nav>
-
-            </div>
-            <div class="col">
-                @yield('body')
-            </div>
+        <div class="col-8">
+            @auth
+                <a href="{{route('advts.create')}}">Create Ad<a>
+            @endauth
+            @yield('content')
+        </div>
+        <div class="col-4">
+            @auth
+                @include('logout')
+            @endauth
+            @guest
+                @include('login')
+            @endguest
         </div>
     </div>
 </div>
