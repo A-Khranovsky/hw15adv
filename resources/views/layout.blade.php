@@ -1,9 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-
-//dd(Auth::user());
-
 ?>
     <!doctype html>
 <html lang="en">
@@ -37,7 +34,7 @@ use Illuminate\Support\Facades\Auth;
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
                                 <?php if (Auth::user() !== null):?>
-                                <a class="nav-link" href="edit">Create Ad</a>
+                                <a class="nav-link" href="/edit">Create Ad</a>
                                 <?php endif;?>
                             </div>
                             <?php if (Auth::user() === null):?>
@@ -67,7 +64,7 @@ use Illuminate\Support\Facades\Auth;
                 </nav>
 
             </div>
-            <div class="" col>
+            <div class="col">
                 @yield('body')
             </div>
         </div>

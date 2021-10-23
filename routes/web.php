@@ -26,23 +26,13 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'home']);
-Route::get('/edit', [HomeController::class, 'form']);
-Route::post('/edit/Create', [HomeController::class, 'create']);
+//Route::get('/edit', [HomeController::class, 'form']);
+Route::post('/create', [HomeController::class, 'create']);
 
-Route::get('/{id}', [HomeController::class, 'advt']);
+Route::get('/{id}', [HomeController::class, 'advt'])->whereNumber('id');
+Route::get('/delete/{id}', [HomeController::class, 'delete']);
+Route::get('/edit/{id}', [HomeController::class, 'form']);
+Route::post('/edit/{id}', [HomeController::class, 'edit']);
 
 Route::post('login', [AuthController::class, 'login']);
-Route::get('logout', [AuthController::class, 'logout']);
-
-//Route::prefix('advtsrr')->group(function () {
-//    Route::get('/', [AdvtController::class, 'index'])->middleware('auth');
-//
-//    Route::match(['get', 'post'], '/create', [AdvtController::class, 'form'])->middleware('auth');
-//    Route::match(['get', 'post'], '/update/{id}', [AdvtController::class, 'form'])->middleware('auth');
-//
-//    Route::get('/delete/{id}', [AdvtController::class, 'delete'])->middleware('auth');
-//});
-
-//Route::get('/', function () {
-//    return view('layout');
-//});
+Route::get('/logout', [AuthController::class, 'logout']);
