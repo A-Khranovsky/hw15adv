@@ -2,7 +2,7 @@
 
 @section('title', 'Advt management')
 
-@section('body')
+@section('content')
     <form action="<?=$advt['action']?>" method="post">
         @csrf
         <div class="card w-80 m-3 border-dark">

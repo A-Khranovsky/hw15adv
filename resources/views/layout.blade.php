@@ -21,42 +21,22 @@ use Illuminate\Support\Facades\Auth;
         crossorigin="anonymous"></script>
 <div class="container">
     <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-light bg-success bg-gradient rounded-1">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">Advs-service</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        @auth
-                        <li class="nav-item">
-                            Wellcome {{\Illuminate\Support\Facades\Auth::user()->username}}
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('advts.create')}}">Create Ad</a>
-                        </li>
-                        @endauth
-                        @guest
-                        <li class="nav-item">
-
-                        </li>
-                        @endguest
-                    </ul>
-                </div>
+        <div class="container">
+            <div class="row bg-success rounded bg-gradient d-flex align-items-center p-2">
+                <div class="col"> <a class="navbar-brand" href="/">Advs-service</a></div>
+                @auth
+                <div class="col">Wellcome {{\Illuminate\Support\Facades\Auth::user()->username}}</div>
+                <div class="col"><a href="{{route('advts.create')}}">Create Ad</a></div>
+                <div class="col"><a href="{{route('logout')}}">Logout</a></div>
+                @endauth
             </div>
-        </nav>
+        </div>
     </div>
     <div class="row">
-        <div class="col-8">
+        <div @auth class="col-12"@endauth @guest class="col-8"@endguest>
             @yield('content')
         </div>
-        <div class="col-4">
-            @auth
-                @include('logout')
-            @endauth
+        <div @auth class="col"@endauth @guest class="col-4"@endguest>
             @guest
                 @include('login')
             @endguest

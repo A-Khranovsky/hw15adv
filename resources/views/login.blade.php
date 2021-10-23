@@ -3,18 +3,18 @@
     <div class="mb-3 mt-3">
         <input name="username" type="text" placeholder="User name" id="validationServerUsername"
                class="form-control
-               @if($errors->has('userName'))
+               @if($errors->has('username'))
                    is-invalid
                @endif" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback">
 
-               @if($errors->has('userName'))
+               @if($errors->has('username'))
                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    {{$errors->first('userName')}}
+                    {{$errors->first('username')}}
                </div>
                @endif
     </div>
     <div class="mb-3">
-        <input name="password" type="text" placeholder="Password" id="validationServerPassword"
+        <input name="password" type="password" placeholder="Password" id="validationServerPassword"
                class="form-control
                @if($errors->has('password'))
                    is-invalid

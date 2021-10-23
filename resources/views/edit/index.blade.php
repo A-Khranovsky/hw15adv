@@ -2,7 +2,7 @@
 
 @section('title', 'Edit advts')
 
-@section('body')
+@section('content')
     <div class="card border-dark mt-3">
         <table class="table">
             <thead>
