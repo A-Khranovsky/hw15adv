@@ -16,11 +16,14 @@
                     <div class="row">
                         <div class="col-auto me-auto fs-7">Author: {{$advt->user->username}}</div>
                         <div class="col-auto">
-                            @if(\Illuminate\Support\Facades\Auth::id() === $advt->user_id)
-                                <a class="btn btn-outline-primary btn-sm"
-                                   href="edit/{{$advt->id}}">Edit</a>
-                                <a class="btn btn-outline-primary btn-sm" href="delete/{{$advt->id}}">Delete</a>
-                            @endif
+{{--                            @if(\Illuminate\Support\Facades\Auth::id() === $advt->user_id)--}}
+                                @can('update', $advt)
+                                    <a class="btn btn-outline-primary btn-sm" href="edit/{{$advt->id}}">Edit</a>
+                                @endcan
+                                @can('delete', $advt)
+                                    <a class="btn btn-outline-primary btn-sm" href="delete/{{$advt->id}}">Delete</a>
+                                @endcan
+{{--                            @endif--}}
                         </div>
                         <div class="col-auto">
                             <small class="text-muted">
