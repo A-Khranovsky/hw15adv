@@ -33,7 +33,7 @@ class AdvtController extends Controller
 
     public function form(Advt $advt = null)
     {
-        if (!Auth::user()->can('update', $advt)) {
+        if (!Auth::user()->can('update', $advt) && $advt !== null) {
             return redirect()->route('home');
         }
         return view('edit.form', ['advt' => $advt]);
