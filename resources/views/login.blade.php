@@ -25,5 +25,5 @@
                </div>
         @endif
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button> <a class="btn btn-outline-primary" href="{{$oauth_autodesk_uri}}" >Log in through Autodesk</a>
 </form>

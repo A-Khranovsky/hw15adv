@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdvtController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OauthController;
 
 Route::get('/', [AdvtController::class, 'index'])->name('home');
 Route::get('/{id}', [AdvtController::class, 'advt'])->whereNumber('id')->name('advts.show');
@@ -16,3 +17,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/edit/{advt?}', [AdvtController::class, 'edit'])->whereNumber('advt');
     Route::get('/delete/{id}', [AdvtController::class, 'delete'])->name('advts.delete');
 });
+
+Route::get('/oauth', [OauthController::class, 'index']);
+Route::get('/callback', [OauthController::class, 'callback']);
