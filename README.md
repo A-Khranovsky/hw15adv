@@ -36,5 +36,5 @@ cp .env.example .env
 php artisan migrate:fresh --seed  
 php artisan key:generate  
 
-#Down services if you are exit
+# Down services if you are exit
 docker-compose down  
