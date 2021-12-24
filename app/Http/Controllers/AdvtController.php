@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveAdRequest;
 use App\Services\Ad\AdService;
 use App\Services\Ad\AdServiceinterface;
 use Illuminate\Http\Request;
@@ -24,15 +25,9 @@ class AdvtController extends Controller
         return view('index', ['advts' => $advts]);
     }
 
-    public function edit(Advt $advt = null, Request $request)
+    public function edit(Advt $advt = null, SaveAdRequest $request)
     {
-        $data = $request->validate(
-            [
-                'title' => ['required'],
-                'description' => ['required']
-            ]
-        );
-
+        $data = $request->all();
         $data['user_id'] = Auth::id();
 
         Advt::updateOrCreate(['id' => $advt->id ?? null], $data);
@@ -47,12 +42,9 @@ class AdvtController extends Controller
         return view('edit.form', ['advt' => $advt]);
     }
 
-    public function create(Request $request)
+    public function create(SaveAdRequest $request)
     {
-        $this->validate($request, [
-            'title' => ['required'],
-            'description' => ['required']
-        ]);
+        $request->all();
 
         $advt = Advt::create([
             'title' => $request->get('title'),
