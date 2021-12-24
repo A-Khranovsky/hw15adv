@@ -4,15 +4,23 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Services\Ad\AdService;
+use App\Services\Ad\AdServiceinterface;
 use Illuminate\Http\Request;
 use App\Models\Advt;
 use Illuminate\Support\Facades\Auth;
 
 class AdvtController extends Controller
 {
+    protected AdServiceinterface $adService;
+
+    public function __construct(AdServiceinterface  $adService)
+    {
+        $this->adService = $adService;
+    }
     public function index()
     {
-        $advts = Advt::orderBy('id', 'desc')->paginate(5);
+        $advts = $this->adService->index();
         return view('index', ['advts' => $advts]);
     }
 
