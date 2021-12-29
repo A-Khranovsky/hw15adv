@@ -1,3 +1,7 @@
+```
+Advertisment site.
+To login find author's name, it is a login. Pasword is password.
+```
 ## Up the services
 docker-compose up -d
 
